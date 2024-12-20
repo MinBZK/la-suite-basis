@@ -1,0 +1,18 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+  - deployment.yaml
+  - ingress.yaml
+  - service.yaml
+  - postgresql-cluster.yaml
+  - secret-postgres.yaml
+  - secret-keycloak.yaml
+  - secret-postgres-super.yaml
+
+namePrefix: keycloak-
+
+commonLabels:
+  minbzk.github.io/name: keycloak
+
+buildMetadata: [originAnnotations]

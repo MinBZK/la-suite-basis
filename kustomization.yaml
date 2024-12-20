@@ -1,0 +1,14 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: tn-openbsw-basis
+namePrefix: basis-
+
+buildMetadata: [originAnnotations]
+
+
+resources:
+ - manifests/keycloak
+ - manifests/vault
+ - manifests/grafana
+ - manifests/alertmanager

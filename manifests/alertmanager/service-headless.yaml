@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: svc-headless
+spec:
+  ports:
+    - port: 9093
+      targetPort: http
+      protocol: TCP
+      name: http
+    - port: 9094
+      targetPort: clusterpeer-tcp
+      protocol: TCP
+      name: cluster-tcp
+    - port: 9094
+      targetPort: clusterpeer-udp
+      protocol: UDP
+      name: cluster-udp
+  selector:
+    app: alertmanager
+  clusterIP: None

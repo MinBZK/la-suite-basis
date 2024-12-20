@@ -1,0 +1,53 @@
+apiVersion: v1
+data:
+  grafana.ini: |+
+    [auth]
+    disable_login_form = false
+
+    [auth.generic_oauth]
+    allow_assign_grafana_admin = true
+    allow_sign_up = true
+    api_url = https://id.la-suite.apps.digilab.network/realms/lasuite/protocol/openid-connect/userinfo
+    auth_url = https://id.la-suite.apps.digilab.network/realms/lasuite/protocol/openid-connect/auth
+    client_id = ${GF_AUTH_GENERIC_OAUTH_CLIENT_ID}
+    client_secret = ${GF_AUTH_GENERIC_OAUTH_CLIENT_SECRET}
+    enabled = true
+    name = Mijn-Bureau
+    role_attribute_path = contains(resource_access.grafana.roles[*], 'admin') && 'Admin' || contains(resource_access.grafana.roles[*], 'editor') && 'Editor' || 'Viewer'
+    scopes = openid profile email roles offline_access
+    token_url = https://id.la-suite.apps.digilab.network/realms/lasuite/protocol/openid-connect/token
+    signout_redirect_url = https://id.la-suite.apps.digilab.network/realms/lasuite/protocol/openid-connect/logout
+    use_refresh_token = true
+
+    [help]
+    enabled = false
+
+    [news]
+    news_feed_enabled = false
+
+    [dashboards]
+    versions_to_keep = 5
+
+    [log]
+    level = debug
+    mode = console
+
+    [paths]
+    data = /var/lib/grafana
+    logs = /var/log/grafana
+    plugins = /var/lib/grafana/plugins
+    provisioning = /etc/grafana/provisioning/
+
+    [security]
+    admin_password = ${GF_SECURITY_ADMIN_PASSWORD}
+    admin_user = ${GF_SECURITY_ADMIN_USER}
+
+    [server]
+    root_url = https://grafana.la-suite.apps.digilab.network
+
+    [analytics]
+    reporting_enabled = false
+
+kind: ConfigMap
+metadata:
+  name: ini
