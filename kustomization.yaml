@@ -12,3 +12,4 @@ resources:
  - manifests/vault
  - manifests/grafana
  - manifests/alertmanager
+ - manifests/mailcatcher
