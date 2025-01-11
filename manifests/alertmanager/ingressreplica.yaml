@@ -19,7 +19,7 @@ items:
                 pathType: ImplementationSpecific
                 backend:
                   service:
-                    name: alertmanager-0
+                    name: svc-0
                     port:
                       name: http
       tls:
@@ -42,7 +42,7 @@ items:
                 pathType: ImplementationSpecific
                 backend:
                   service:
-                    name: alertmanager-1
+                    name: svc-1
                     port:
                       name: http
       tls:

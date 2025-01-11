@@ -6,7 +6,7 @@ metadata:
     app: alertmanager
 spec:
   replicas: 2
-  serviceName: alertmanager
+  serviceName: svc-headless
   selector:
     matchLabels:
       app: alertmanager
@@ -32,6 +32,7 @@ spec:
             runAsGroup: 65534
             runAsNonRoot: true
             runAsUser: 65534
+            fsGroup: 65534
           image: prom/alertmanager:v0.27.0
           env:
             - name: POD_IP
@@ -39,13 +40,23 @@ spec:
                 fieldRef:
                   apiVersion: v1
                   fieldPath: status.podIP
+            - name: SLACK_API_URL
+              valueFrom:
+                secretKeyRef:
+                  name: sec-alertmanager
+                  key: slack_api_url
+            - name: OAUTH2_CLIENT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: sec-alertmanager
+                  key: oauth2_client_secret
           args:
             - --storage.path=/alertmanager
             - --config.file=/etc/alertmanager/alertmanager.yml
             - --cluster.advertise-address=[$(POD_IP)]:9094
             - --cluster.listen-address=0.0.0.0:9094
-            - --cluster.peer=release-name-alertmanager-0.release-name-alertmanager-headless:9094
-            - --cluster.peer=release-name-alertmanager-1.release-name-alertmanager-headless:9094
+            - --cluster.peer=basis-alertmanager-sfs-0.basis-alertmanager-svc-headless.tn-openbsw-basis.svc.cluster.local:9094
+            - --cluster.peer=basis-alertmanager-sfs-1.basis-alertmanager-svc-headless.tn-openbsw-basis.svc.cluster.local:9094
           ports:
             - name: http
               containerPort: 9093
@@ -69,10 +80,16 @@ spec:
               mountPath: /etc/alertmanager
             - name: storage
               mountPath: /alertmanager
+            - name: slack-secret-volume
+              mountPath: /etc/secrets/slack_api_url
+              subPath: slack_api_url
       volumes:
         - name: config
           configMap:
-            name: config
+            name: alertmanager-config
+        - name: slack-secret-volume
+          secret:
+            secretName: sec-alertmanager
   volumeClaimTemplates:
     - metadata:
         name: storage
