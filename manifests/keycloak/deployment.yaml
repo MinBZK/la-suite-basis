@@ -30,7 +30,7 @@ spec:
         - name: keycloak
           image: quay.io/keycloak/keycloak:25.0.1
           args:
-            ["start", "--proxy-headers=forwarded", "--hostname-strict=false", "--spi-theme-welcome-theme=nl-design-system" ]
+            ["start", "--proxy-headers=forwarded", "--features=preview", "--hostname-strict=false", "--spi-theme-welcome-theme=nl-design-system" ]
           env:
             - name: KEYCLOAK_ADMIN
               valueFrom:
