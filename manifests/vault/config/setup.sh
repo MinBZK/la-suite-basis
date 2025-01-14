@@ -60,4 +60,5 @@ vault secrets enable -path=secrets -version=2 kv
 # enable totp
 vault secrets enable totp
 vault write totp/keys/opendeskdefaultadmin url="xxx"
-vault write totp/keys/opendeskadmin
+vault write totp/keys/opendeskadmin url="xxx"
+vault write totp/keys/keycloakadmin url="xxx"
