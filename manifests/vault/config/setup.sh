@@ -30,9 +30,8 @@ vault write auth/oidc/role/default \
       allowed_redirect_uris="https://secret.la-suite.apps.digilab.network/oidc/callback" \
       user_claim="email" \
       oidc_scopes="email,profile,roles" \
-      token_policies="viewer-team" \
-      claim_mappings={"email"="email","sub"="sub","name"="name"} \
-      bound_claims={"/resource_access/vault/roles":"viewer"}
+      token_policies="default" \
+      claim_mappings={"email"="email","sub"="sub","name"="name"}
 
 vault write auth/oidc/role/viewer \
       bound_audiences="vault" \
