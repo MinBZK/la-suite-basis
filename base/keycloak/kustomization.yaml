@@ -12,6 +12,6 @@ namePrefix: keycloak-
 labels:
   - pairs:
       app.kubernetes.io/name: keycloak
-    includeSelectors: true 
+    includeSelectors: true
 
 buildMetadata: [originAnnotations]
