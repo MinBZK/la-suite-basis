@@ -10,12 +10,12 @@ labels:
       app.kubernetes.io/version: v1.0.0
 
 images: # check which version you want to deploy
-- name: quay.io/keycloak/keycloak
-  newTag: 25.0.1
-- name: hashicorp/vault
-  newTag: 1.16.1
-- name: busybox
-  newTag: 1.37.0
+  - name: quay.io/keycloak/keycloak
+    newTag: 25.0.1
+  - name: hashicorp/vault
+    newTag: 1.16.1
+  - name: busybox
+    newTag: 1.37.0
 
 patches: # define a hostname you want to use
   - target:
@@ -40,9 +40,9 @@ patches: # define a hostname you want to use
         value: secret.la-suite.apps.digilab.network
 
 resources:
- - ../../base/keycloak/
- - ../../base/vault/
- - ../../base/grafana/
+  - ../../base/keycloak/
+  - ../../base/vault/
+  - ../../base/grafana/
 
 secretGenerator:
   - name: sec-keycloak

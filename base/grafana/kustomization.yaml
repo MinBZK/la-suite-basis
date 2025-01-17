@@ -17,5 +17,4 @@ labels:
       app.kubernetes.io/name: grafana
 
 buildMetadata: [originAnnotations]
-
 #todo: use configmap generator for configmap.yaml
