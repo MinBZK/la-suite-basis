@@ -6,9 +6,8 @@ namePrefix: basis-
 
 buildMetadata: [originAnnotations]
 
-
 resources:
- - manifests/keycloak
- - manifests/vault
- - manifests/grafana
- - manifests/alertmanager
+  - manifests/keycloak
+  - manifests/vault
+  - manifests/grafana
+  - manifests/alertmanager
