@@ -1,0 +1,90 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: tn-openbsw-basis
+# namePrefix: basis-
+
+labels:
+  - pairs:
+      app.kubernetes.io/part-of: mijn-bureau
+      app.kubernetes.io/managed-by: Kustomize
+      app.kubernetes.io/version: v1.0.0
+
+images: # check which version you want to deploy
+- name: quay.io/keycloak/keycloak
+  newTag: 25.0.1
+- name: hashicorp/vault
+  newTag: 1.16.1
+- name: busybox
+  newTag: 1.37.0
+
+patches:
+  - target:
+      kind: Ingress
+      name: keycloak-ing
+    patch: |-
+      - op: replace
+        path: /spec/rules/0/host
+        value: id.la-suite.apps.digilab.network
+      - op: replace
+        path: /spec/tls/0/hosts/0
+        value: id.la-suite.apps.digilab.network
+  - path: patches/keycloak.yaml
+    target:
+      kind: Deployment
+      name: keycloak-dpl
+  - target:
+      kind: Ingress
+      name: vault-ing
+    patch: |-
+      - op: replace
+        path: /spec/rules/0/host
+        value: secret.la-suite.apps.digilab.network
+      - op: replace
+        path: /spec/tls/0/hosts/0
+        value: secret.la-suite.apps.digilab.network
+  - path: patches/vault.yaml
+    target:
+      kind: StatefulSet
+      name: vault-sfs
+
+
+replicas:
+- name: keycloak-dpl
+  count: 2
+
+resources:
+ - ../../base/keycloak/
+ - ../../base/vault/
+ - ../../base/grafana/
+
+secretGenerator:
+  - name: sec-keycloak
+    envs:
+      - secrets/keycloak/keycloak.yaml
+  - name: sec-postgres
+    envs:
+      - secrets/keycloak/postgres.yaml
+  - name: sec-postgres-super
+    envs:
+      - secrets/keycloak/postgres-super.yaml
+
+replacements:
+  - source:
+      kind: Secret
+      name: sec-postgres
+      fieldPath: metadata.name
+    targets:
+      - select:
+          kind: PostgresqlCluster
+        fieldPaths:
+          - spec.secret.name
+  - source:
+      kind: Secret
+      name: sec-postgres-super
+      fieldPath: metadata.name
+    targets:
+      - select:
+          kind: PostgresqlCluster
+        fieldPaths:
+          - spec.superSecret.name
