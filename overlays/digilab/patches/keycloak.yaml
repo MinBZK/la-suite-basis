@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: keycloak-dpl
+spec:
+  template:
+    spec:
+      containers:
+        - name: keycloak
+          image: quay.io/keycloak/keycloak:25.0.1
+          env:
+            - name: ORGANIZATION
+              value: "test"
+            - name: KC_HOSTNAME_ADMIN
+              value: "https://id.la-suite.apps.digilab.network"
+            - name: KC_HOSTNAME
+              value: "https://id.la-suite.apps.digilab.network"
+            - name: KC_DB_URL
+              value: "jdbc:postgresql://keycloak-cluster-db-rw/keycloak"

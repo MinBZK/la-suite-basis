@@ -1,0 +1,21 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+  - deployment.yaml
+  - ingress.yaml
+  - service.yaml
+  - configmap.yaml
+  - admin-credentials.yaml
+  - grafana-auth.yaml
+  - pvc.yaml
+
+namePrefix: grafana-
+
+labels:
+  - pairs:
+      app.kubernetes.io/name: grafana
+
+buildMetadata: [originAnnotations]
+
+#todo: use configmap generator for configmap.yaml
