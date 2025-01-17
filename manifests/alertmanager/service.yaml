@@ -27,4 +27,3 @@ spec:
   selector:
     app: alertmanager
     apps.kubernetes.io/pod-index: "1"
-

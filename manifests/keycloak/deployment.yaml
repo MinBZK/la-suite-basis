@@ -16,21 +16,27 @@ spec:
       initContainers:
         - name: keycloak-chown
           command:
-            - wget 
+            - wget
             - https://github.com/MinBZK/keycloak-theme/releases/download/v1.2.1/keycloak-nl-design-system.jar
-            - -O 
+            - -O
             - /opt/keycloak/providers/keycloak-nl-design-system.jar
           image: busybox:1.37.0
           securityContext:
             runAsUser: 0
           volumeMounts:
-            - mountPath:  /opt/keycloak/providers/
+            - mountPath: /opt/keycloak/providers/
               name: keycloak-provider
       containers:
         - name: keycloak
           image: quay.io/keycloak/keycloak:25.0.1
           args:
-            ["start", "--proxy-headers=forwarded", "--features=preview", "--hostname-strict=false", "--spi-theme-welcome-theme=nl-design-system" ]
+            [
+              "start",
+              "--proxy-headers=forwarded",
+              "--features=preview",
+              "--hostname-strict=false",
+              "--spi-theme-welcome-theme=nl-design-system",
+            ]
           env:
             - name: KEYCLOAK_ADMIN
               valueFrom:

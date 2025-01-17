@@ -4,10 +4,10 @@ metadata:
   name: service
 spec:
   ports:
-  - name: grafana
-    port: 3000
-    protocol: TCP
-    targetPort: grafana-http
+    - name: grafana
+      port: 3000
+      protocol: TCP
+      targetPort: grafana-http
   selector:
     app: grafana
   type: ClusterIP
