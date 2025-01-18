@@ -1,4 +1,4 @@
 creation_rules:
-  - path_regex: overlays/.*\.(yaml|env)$
+  - path_regex: .*\.(yaml|env)$
     encrypted_regex: ^.+$
     age: "age1ju3xfm27kpus9wv9we6l5qr00ul23uj5jfxxz3skv6vjagtkasdsuwsqsp"
