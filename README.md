@@ -40,12 +40,19 @@ In overlays/ worden alle aanpassingen gedaan die nodig zijn voor jou omgeving. M
 
 ## Configuratie Componenten
 
-todo.
+Als de compenenten draaien moeten ze nog geconfigureerd worden. Dit is best wel wat werk en vereist begrip van de applicatie. In de toekomst willen we hier terraform voor gebruiken zodat het makkelijker wordt, maar voor nu doen we het met de hand.
 
+### Keycloak
+
+todo
+
+### Vault
+
+todo
 
 ## Operators
 
-Momenteel gebruiken we de cloudnative-pg operator. Door deze operator kan niet iedere kubernetes cluster onze software draaien. We gaan dit refactoren.
+Momenteel gebruiken we de cloudnative-pg operator. Door deze operator kan niet iedere kubernetes cluster onze software draaien. We gaan deze operator verwijderen en een eigen hosten.
 
 ## How to contribute
 

@@ -60,13 +60,13 @@ resources:
 secretGenerator:
   - name: sec-keycloak
     envs:
-      - secrets/keycloak/keycloak.yaml
+      - secrets/keycloak/keycloak.env
   - name: sec-postgres
     envs:
-      - secrets/keycloak/postgres.yaml
+      - secrets/keycloak/postgres.env
   - name: sec-postgres-super
     envs:
-      - secrets/keycloak/postgres-super.yaml
+      - secrets/keycloak/postgres-super.env
 
 replacements:
   - source:
