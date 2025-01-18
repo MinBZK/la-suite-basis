@@ -1,0 +1,26 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+  - deployment.yaml
+  - ingress.yaml
+  - service.yaml
+
+namePrefix: oauth2-proxy-
+
+labels:
+  - pairs:
+      app.kubernetes.io/name: oauth2-proxy
+    includeSelectors: true
+
+buildMetadata: [originAnnotations]
+
+configMapGenerator:
+  - name: oauth2-proxy-config
+    files:
+      - oauth2-proxy.cfg
+
+secretGenerator:
+  - name: oauth2-proxy-secret
+    envs:
+      - secrets.env
