@@ -10,10 +10,10 @@ spec:
           image: quay.io/keycloak/keycloak:25.0.1
           env:
             - name: ORGANIZATION
-              value: "test"
+              value: "Ministerie van Binnenlandse Zaken en Koninkrijksrelaties"
             - name: KC_HOSTNAME_ADMIN
               value: "https://id.la-suite.apps.digilab.network"
             - name: KC_HOSTNAME
               value: "https://id.la-suite.apps.digilab.network"
             - name: KC_DB_URL
-              value: "jdbc:postgresql://keycloak-cluster-db-rw/keycloak"
+              value: "jdbc:postgresql://basis-keycloak-cluster-db-rw/keycloak"

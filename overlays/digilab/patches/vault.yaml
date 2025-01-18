@@ -11,4 +11,4 @@ spec:
         - name: vault
           env:
             - name: VAULT_CLUSTER_ADDR
-              value: "http://vault-svc:8201" # this might change if you add a prefix of suffix
+              value: "http://basis-vault-svc:8201" # this might change if you add a prefix of suffix
