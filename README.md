@@ -1,6 +1,6 @@
 # La suite basis
 
-Met deze Infrastructure as Code (IaC) kan je makkelijk de basis voor mijn-bureau software deployen. De compontenten die worden deployed zijn:
+Met deze Infrastructure as Code (IaC) kan je makkelijk de basis voor mijn-bureau software installeren. De componenten die worden geïnstalleerd zijn:
 
 * Ideniteit provider (keycloak)
 * secrets manager (vault)
