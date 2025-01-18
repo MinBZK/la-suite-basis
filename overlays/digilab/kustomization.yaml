@@ -50,7 +50,7 @@ patches:
 
 replicas:
   - name: keycloak-dpl
-    count: 2
+    count: 1
 
 resources:
   - ../../base/keycloak/
