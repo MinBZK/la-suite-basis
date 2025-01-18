@@ -11,5 +11,5 @@ storage "raft" {
   path    = "/vault/data"
 }
 
-default_lease_ttl = "768h"
-max_lease_ttl = "768h"
+default_lease_ttl="768h"
+max_lease_ttl="768h"

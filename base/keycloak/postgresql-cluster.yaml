@@ -12,7 +12,7 @@ spec:
       database: keycloak
       owner: keycloak
       secret:
-        name: $(KEYCLOAK_POSTGRES_SECRET_NAME)
+        name: KEYCLOAK_POSTGRES_SECRET_NAME
 
   storage:
     storageClass: managed-csi-premium
@@ -20,7 +20,7 @@ spec:
 
   enableSuperuserAccess: true
   superuserSecret:
-    name: $(KEYCLOAK_POSTGRES_SUPER_SECRET_NAME)
+    name: KEYCLOAK_POSTGRES_SUPER_SECRET_NAME
 
   postgresql:
     parameters:
