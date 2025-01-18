@@ -76,6 +76,7 @@ replacements:
     targets:
       - select:
           kind: PostgresqlCluster
+          name: cluster-db
         fieldPaths:
           - spec.secret.name
   - source:
@@ -85,5 +86,6 @@ replacements:
     targets:
       - select:
           kind: PostgresqlCluster
+          name: cluster-db
         fieldPaths:
           - spec.superSecret.name
