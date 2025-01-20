@@ -84,7 +84,8 @@ spec:
           configMap:
             name: vault-config
         - name: data
-          emptyDir: {}
+          persistentVolumeClaim:
+            claimName: data
   volumeClaimTemplates:
     - metadata:
         name: data
