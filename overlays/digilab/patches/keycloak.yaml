@@ -10,7 +10,7 @@ spec:
           image: quay.io/keycloak/keycloak:25.0.1
           env:
             - name: ORGANIZATION
-              value: "Ministerie van Binnenlandse Zaken en Koninkrijksrelaties"
+              value: ""
             - name: KC_HOSTNAME_ADMIN
               value: "https://id.la-suite.apps.digilab.network"
             - name: KC_HOSTNAME
