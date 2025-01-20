@@ -84,12 +84,13 @@ spec:
           configMap:
             name: vault-config
         - name: data
-          emptyDir: {}
+          persistentVolumeClaim:
+            claimName: data
   volumeClaimTemplates:
     - metadata:
         name: data
       spec:
-        storageClassName: managed
+        storageClassName: azurefile
         accessModes:
           - ReadWriteOnce
         resources:
