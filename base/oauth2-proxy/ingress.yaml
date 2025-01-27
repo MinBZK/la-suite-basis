@@ -4,6 +4,12 @@ metadata:
   name: ing
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt-prod
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/configuration-snippet: |
+      if ($request_uri ~* "^/admin") {
+        return 302 https://meet.la-suite.apps.digilab.network$request_uri;
+      }
+
 spec:
   ingressClassName: nginx
   rules:
@@ -17,6 +23,7 @@ spec:
                   number: 4180
             path: /
             pathType: Prefix
+
   tls:
     - hosts:
         - oauth2-proxy.la-suite.apps.digilab.network
