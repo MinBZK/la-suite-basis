@@ -24,9 +24,15 @@ spec:
         runAsUser: 1000
         fsGroup: 1000
       initContainers:
-      - name: set-permissions
-        image: busybox:1.37.0
-        command: ['sh', '-c', "chown -R 1000:1000 /vault/data", "chmod -R 750 /vault/data"]
+        - name: set-permissions
+          image: busybox:1.37.0
+          command:
+            [
+              "sh",
+              "-c",
+              "chown -R 1000:1000 /vault/data",
+              "chmod -R 750 /vault/data",
+            ]
       containers:
         - name: vault
           image: hashicorp/vault:1.16.1
