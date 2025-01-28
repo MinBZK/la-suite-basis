@@ -26,7 +26,13 @@ spec:
       initContainers:
         - name: set-permissions
           image: busybox:1.37.0
-          command: ['sh', '-c', "chown -R 1000:1000 /vault/data", "chmod -R 750 /vault/data"]
+          command:
+            [
+              "sh",
+              "-c",
+              "chown -R 1000:1000 /vault/data",
+              "chmod -R 750 /vault/data",
+            ]
           volumeMounts:
             - name: config
               mountPath: /vault/config
