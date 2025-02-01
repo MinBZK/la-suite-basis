@@ -57,6 +57,7 @@ resources:
   - ../../base/vault/
   - ../../base/grafana/
   - ../../base/oauth2-proxy/
+  - ../../base/portal/
 
 secretGenerator:
   - name: sec-keycloak
