@@ -14,7 +14,7 @@ spec:
       name: deployment
     spec:
       containers:
-        - image: ghcr.io/minbzk/mijn-bureau-portal:v1.0.1
+        - image: ghcr.io/minbzk/mijn-bureau-portal:v1.0.2
           imagePullPolicy: Always
           name: portal
           ports:
