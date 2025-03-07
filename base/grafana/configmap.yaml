@@ -14,7 +14,7 @@ data:
     enabled = true
     name = Mijn-Bureau
     role_attribute_path = contains(resource_access.grafana.roles[*], 'admin') && 'Admin' || contains(resource_access.grafana.roles[*], 'editor') && 'Editor' || 'Viewer'
-    scopes = openid profile email roles offline_access
+    scopes = openid profile email roles
     token_url = https://id.la-suite.apps.digilab.network/realms/lasuite/protocol/openid-connect/token
     signout_redirect_url = https://id.la-suite.apps.digilab.network/realms/lasuite/protocol/openid-connect/logout
     use_refresh_token = true
