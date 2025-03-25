@@ -17,6 +17,10 @@ spec:
         - image: ghcr.io/minbzk/mijn-bureau-portal:v1.2.0
           imagePullPolicy: Always
           name: portal
+          resources:
+            requests:
+              cpu: 10m
+              memory: 32Mi
           ports:
             - containerPort: 80
               protocol: TCP

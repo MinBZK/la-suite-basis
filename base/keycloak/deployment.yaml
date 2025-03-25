@@ -82,6 +82,10 @@ spec:
           volumeMounts:
             - name: keycloak-provider
               mountPath: /opt/keycloak/providers/
+          resources:
+            requests:
+              cpu: 10m
+              memory: 128Mi
       volumes:
         - name: keycloak-provider
           emptyDir: {}

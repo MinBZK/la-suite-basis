@@ -31,6 +31,10 @@ spec:
       containers:
         - args:
             - -config=/etc/grafana/grafana.ini
+          resources:
+            requests:
+              cpu: 10m
+              memory: 128Mi
           env:
             - name: TMPDIR
               value: /var/lib/grafana

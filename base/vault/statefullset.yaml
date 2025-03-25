@@ -89,6 +89,11 @@ spec:
               mountPath: /vault/config
             - name: data
               mountPath: /vault/data
+          resources:
+            requests:
+              cpu: 10m
+              memory: 128Mi
+
       volumes:
         - name: config
           configMap:
