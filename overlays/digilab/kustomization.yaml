@@ -58,6 +58,7 @@ resources:
   - ../../base/grafana/
   - ../../base/oauth2-proxy/
   - ../../base/portal/
+  - ../../base/bureaublad/
 
 secretGenerator:
   - name: sec-keycloak
@@ -69,6 +70,9 @@ secretGenerator:
   - name: sec-postgres-super
     envs:
       - secrets/keycloak/postgres-super.env
+  - name: sec-bureaublad-backend
+    envs:
+      - secrets/bureaublad/backend.env
 
 replacements:
   - source:

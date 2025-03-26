@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: frontend
+  template:
+    metadata:
+      labels:
+        app: frontend
+    spec:
+      containers:
+        - image: ghcr.io/minbzk/bureaublad-frontend:pr-12
+          imagePullPolicy: Always
+          name: frontend
+          resources:
+            requests:
+              cpu: 10m
+              memory: 32Mi
+          ports:
+            - containerPort: 80
+              protocol: TCP
