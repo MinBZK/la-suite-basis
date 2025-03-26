@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bureaublad-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: bureaublad-backend
+  template:
+    metadata:
+      labels:
+        app: bureaublad-backend
+    spec:
+      containers:
+        - image: ghcr.io/minbzk/bureaublad-api:pr-12
+          imagePullPolicy: Always
+          name: bureaublad-api
+          resources:
+            requests:
+              cpu: 10m
+              memory: 32Mi
+          ports:
+            - containerPort: 8080
+              protocol: TCP

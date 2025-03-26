@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: svc-frontend
+spec:
+  ports:
+    - name: bureaublad-frontend
+      port: 80
+      protocol: TCP
+      targetPort: 80
+  selector:
+    app.kubernetes.io/component: bureaublad-frontend
+  type: ClusterIP

@@ -1,0 +1,16 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+  - deployment-backend.yaml
+  - ingress.yaml
+  - service-backend.yaml
+
+namePrefix: bureaublad-
+
+labels:
+  - pairs:
+      app.kubernetes.io/name: bureaublad
+
+buildMetadata: [originAnnotations]
+#todo: use configmap generator for configmap.yaml
