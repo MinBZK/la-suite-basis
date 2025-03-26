@@ -3,8 +3,10 @@ kind: Kustomization
 
 resources:
   - deployment-backend.yaml
+  - deployment-frontend.yaml
   - ingress.yaml
   - service-backend.yaml
+  - service-frontend.yaml
 
 namePrefix: bureaublad-
 

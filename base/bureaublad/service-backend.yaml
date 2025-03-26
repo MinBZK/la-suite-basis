@@ -9,5 +9,5 @@ spec:
       protocol: TCP
       targetPort: 8080
   selector:
-    app.kubernetes.io/component: bureaublad-backend
+    app: backend
   type: ClusterIP

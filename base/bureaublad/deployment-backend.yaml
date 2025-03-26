@@ -1,21 +1,27 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: bureaublad-backend
+  name: backend
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: bureaublad-backend
+      app: backend
   template:
     metadata:
       labels:
-        app: bureaublad-backend
+        app: backend
     spec:
       containers:
         - image: ghcr.io/minbzk/bureaublad-api:pr-12
           imagePullPolicy: Always
           name: bureaublad-api
+          env:
+            - name: AI_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: sec-bureaublad-backend
+                  key: AI_API_KEY
           resources:
             requests:
               cpu: 10m

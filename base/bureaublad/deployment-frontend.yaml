@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: bureaublad-frontend
+  name: frontend
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: bureaublad-frontend
+      app: frontend
   template:
     metadata:
       labels:
-        app: bureaublad-frontend
+        app: frontend
     spec:
       containers:
         - image: ghcr.io/minbzk/bureaublad-frontend:pr-12
           imagePullPolicy: Always
-          name: bureaublad-frontend
+          name: frontend
           resources:
             requests:
               cpu: 10m

@@ -70,6 +70,9 @@ secretGenerator:
   - name: sec-postgres-super
     envs:
       - secrets/keycloak/postgres-super.env
+  - name: sec-bureaublad-backend
+    envs:
+      - secrets/bureaublad/backend.env
 
 replacements:
   - source:
