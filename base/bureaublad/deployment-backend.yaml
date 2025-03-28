@@ -13,7 +13,7 @@ spec:
         app: backend
     spec:
       containers:
-        - image: ghcr.io/minbzk/bureaublad-api:v1.0.0
+        - image: ghcr.io/minbzk/bureaublad-api:v1.0.1
           imagePullPolicy: Always
           name: bureaublad-api
           env:
