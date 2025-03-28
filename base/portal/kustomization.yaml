@@ -4,6 +4,7 @@ kind: Kustomization
 resources:
   - deployment.yaml
   - ingress.yaml
+  - ingress-old.yaml
   - service.yaml
 
 namePrefix: portal-

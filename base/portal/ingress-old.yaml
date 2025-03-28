@@ -3,12 +3,11 @@ kind: Ingress
 metadata:
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt-prod
-    nginx.ingress.kubernetes.io/permanent-redirect: https://bureaublad.apps.digilab.network/
-  name: ingress
+  name: ingress-old
 spec:
   ingressClassName: nginx
   rules:
-    - host: portal.la-suite.apps.digilab.network
+    - host: portal-old.la-suite.apps.digilab.network
       http:
         paths:
           - backend:
@@ -20,5 +19,5 @@ spec:
             pathType: Prefix
   tls:
     - hosts:
-        - portal.la-suite.apps.digilab.network
-      secretName: portal-tls
+        - portal-old.la-suite.apps.digilab.network
+      secretName: portal-old-tls
