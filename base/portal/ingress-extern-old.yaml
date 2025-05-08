@@ -1,0 +1,20 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-extern-old
+  annotations:
+    nginx.ingress.kubernetes.io/configuration-snippet: |
+      rewrite ^(.*)$ https://portal-old.la-suite.apps.digilab.network$1 permanent;
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: demo-oud.mijnbureau.org
+      http:
+        paths:
+          - backend:
+              service:
+                name: service
+                port:
+                  number: 80
+            path: /
+            pathType: Prefix

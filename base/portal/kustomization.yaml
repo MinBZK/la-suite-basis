@@ -6,6 +6,8 @@ resources:
   - ingress.yaml
   - ingress-old.yaml
   - service.yaml
+  - ingress-extern.yaml
+  - ingress-extern-old.yaml
 
 namePrefix: portal-
 
